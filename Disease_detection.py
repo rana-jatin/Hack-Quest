@@ -60,11 +60,7 @@ def crop_image(image,size):
 
     return np.expand_dims(resized_image,axis=0)
 
-str = ""
 
-file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png;*.gif")])
-
-str = file_path
 def open_image():
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png;*.gif")])
     str = file_path
@@ -167,48 +163,54 @@ def pred(event):
 
 
 
+def main():
+    # Creating root frame
+    root = tk.Tk()
+    root.title("Medical Diagnostic Application")
+    
+    str = ""
 
-root = tk.Tk()
-root.title("Medical Diagnostic Application")
+    file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png;*.gif")])
 
-
-heading_label = tk.Label(root, text="Team Technocrats", font=("Helvetica", 18, "bold"), padx=20, pady=10)
-heading_label.pack()
-
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
-
-window_width = int(screen_width * 0.7)
-window_height = int(screen_height * 0.5)
-
-root.geometry(f"{window_width}x{window_height}")
-
-
-bg_image = Image.open("C:/Users/jatin/Downloads/starline.jpg")
-
-bg_photo = ImageTk.PhotoImage(bg_image)
-bg_label = tk.Label(root, image=bg_photo)
-bg_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-
-
-
-
-button_font = ('Arial', 12, 'bold')
-
-
-
-select_button = tk.Button(root, text="Select Image", command=open_image, bg="#6A5ACD", font = "button_font")
-select_button.pack(pady=10 , side="top")
-
-
-pred_button = tk.Button(root, text="Get Impression",  bg="#6A5ACD", font="button_font")
-
-
-pred_button.bind("<Button-1>", pred)
-pred_button.pack(pady=10, side="bottom")
-
-image_label = tk.Label(root)
-image_label.pack(anchor="w")
-
-root.mainloop()
-
+    str = file_path
+    
+    heading_label = tk.Label(root, text="Team Technocrats", font=("Helvetica", 18, "bold"), padx=20, pady=10)
+    heading_label.pack()
+    
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    
+    window_width = int(screen_width * 0.7)
+    window_height = int(screen_height * 0.5)
+    
+    root.geometry(f"{window_width}x{window_height}")
+    
+    
+    bg_image = Image.open("C:/Users/jatin/Downloads/starline.jpg")
+    
+    bg_photo = ImageTk.PhotoImage(bg_image)
+    bg_label = tk.Label(root, image=bg_photo)
+    bg_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+    
+    
+    
+    
+    button_font = ('Arial', 12, 'bold')
+    
+    
+    
+    select_button = tk.Button(root, text="Select Image", command=open_image, bg="#6A5ACD", font = "button_font")
+    select_button.pack(pady=10 , side="top")
+    
+    
+    pred_button = tk.Button(root, text="Get Impression",  bg="#6A5ACD", font="button_font")
+    
+    
+    pred_button.bind("<Button-1>", pred)
+    pred_button.pack(pady=10, side="bottom")
+    
+    image_label = tk.Label(root)
+    image_label.pack(anchor="w")
+    
+    root.mainloop()
+    
